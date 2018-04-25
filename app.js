@@ -29,8 +29,10 @@ app.use("/public",express.static(__dirname+'/public'));
 app.use("/images",express.static(path.join(__dirname, '/upload/images')));
 app.use("/videos",express.static(path.join(__dirname, '/upload/videos')));
 app.use("/avatars",express.static(path.join(__dirname, '/upload/avatars')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cookieParser());
 app.use(flash());
 app.use(session({
